@@ -2,7 +2,8 @@
 * Run Project Locally
 	1. how you installed docker + dependencies (WSL2, for example)
 		* Create repository
-		
+
+```		
 		sudo apt-get remove docker docker-engine docker.io containerd runc
 		
 	
@@ -28,7 +29,8 @@
   		
 		
 		$(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-		
+	
+```	
 		* Install Docker
 	
 		`sudo apt-get install docker-ce docker-ce-cli containerd.io`
