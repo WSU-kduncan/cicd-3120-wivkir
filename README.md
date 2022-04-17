@@ -3,28 +3,31 @@
 	1. how you installed docker + dependencies (WSL2, for example)
 		* Create repository
 		
-		`sudo apt-get remove docker docker-engine docker.io containerd runc`
+		sudo apt-get remove docker docker-engine docker.io containerd runc
 		
 	
-		`sudo apt-get update`
+		sudo apt-get update
 			
 
-		`sudo apt-get install \
+		sudo apt-get install \
     		
-			ca-certificates \
+		ca-certificates \
 
-    			curl \
+		curl \
 
-    			gnupg \
+		gnupg \
 
-    			lsb-release`
+		lsb-release
 		
-		`curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg`
 		
-		`echo \
-  			"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu `
+		curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+		
+		echo \
   		
-		`$(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`
+		"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu 
+  		
+		
+		$(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 		
 		* Install Docker
 	
