@@ -57,7 +57,12 @@ $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev
 
 * How to authenticate with DockerHub via CLI using Dockhub credentials
 
+    Use github secrets, and their variable names in the code
+    `${{ secrets.DOCKER_USERNAME }}`
+    `${{ secrets.DOCKER_PASSWORD }}`	
+
     what credentials would you recommend providing?
+	Username and Password
 
 * Configuring GitHub Secrets
 
@@ -76,12 +81,16 @@ $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev
 	Click `New repository secret`
 
 	Enter a name for the secret and it's contents
+	
+	Repeat until all needed secrets are entered
 
 * Behavior of GitHub workflow
 
     what does it do and when
-    variables to change (repository, etc
+	Whenever the release event is triggered on github, a new build of the image is uploaded to docker hub.
 
+    variables to change (repository, etc.)
+	Change images to `docker-hub-namespace/my-docker-hub-repository`, ie `jacobapone/project5`
 
 
 * Container restart script
