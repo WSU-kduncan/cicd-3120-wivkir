@@ -42,6 +42,8 @@ Resources used
   * https://www.linux.com/training-tutorials/how-create-docker-image/
   * https://techoverflow.net/2019/05/18/how-to-fix-configuring-tzdata-interactive-input-when-building-docker-images/
 
+***************
+
 Create DockerHub public repo
 
   1. Create a docker hub account here: https://hub.docker.com/
@@ -54,8 +56,8 @@ Create DockerHub public repo
 
 How to authenticate with DockerHub via CLI using Dockhub credentials
   * Use github secrets, and their variable names in the code
-    `${{ secrets.DOCKER_USERNAME }}`
-    `${{ secrets.DOCKER_PASSWORD }}`	
+    * `${{ secrets.DOCKER_USERNAME }}`
+    * `${{ secrets.DOCKER_PASSWORD }}`	
 
 What credentials would you recommend providing?
   * Username and Password
