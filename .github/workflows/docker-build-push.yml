@@ -24,7 +24,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-        images: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}:
+        images: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}
         flavor: |
           latest=auto
         tags: |
