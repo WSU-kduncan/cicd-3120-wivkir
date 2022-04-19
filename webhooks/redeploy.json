@@ -1,0 +1,7 @@
+[
+  {
+    "id": "redeploy",
+    "execute-command": "/home/ubuntu/cicd-3120-wivkir/webhooks/restart.sh",
+    "command-working-directory": "/var/webhook"
+  }
+]
