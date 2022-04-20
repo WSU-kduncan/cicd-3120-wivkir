@@ -99,12 +99,14 @@ Webhook task definition file
   * Redeploy.json runs restart.sh from var/webhook
 
 How you created you own listener
+
 Turn webhook into a service
-    1. Create webhook.service in /etc/systemd/system
-    2. Fill webhook.service with the contents listed below
-    3. run `sudo systemctl enable webhook.service && sudo systemctl start webhook.service`
-    * webhooks.service contents
-    ```
+
+1. Create webhook.service in /etc/systemd/system
+2. Fill webhook.service with the contents listed below
+3. run `sudo systemctl enable webhook.service && sudo systemctl start webhook.service`
+* webhooks.service contents
+```
 [Unit]
 Description=Webhooks
 
@@ -113,7 +115,7 @@ ExecStart=/home/ubuntu/go/bin/webhook -hooks /home/ubuntu/redeploy.json -hotrelo
 
 [Install]
 WantedBy=multi-user.target
-    ```
+```
 How you installed and are running the webhook on GitHub
   * 
 
