@@ -57,10 +57,10 @@ How to authenticate with DockerHub via CLI using Dockhub credentials
     * `${{ secrets.DOCKER_PASSWORD }}`	
 
 What credentials would you recommend providing?
-  * Username and Password
+  * Username and Password/Token
 
 What credentials are needed
-  * Username and Password
+  * Username and Password/Token
     
 Set secrets and secret names
 	
@@ -84,23 +84,39 @@ What does it do and when
 Variables to change (repository, etc.)
   * Change DOCKER_REPO to the repository being uploaded to
 
-***********
-
-install GO 
-https://go.dev/dl/go1.18.1.linux-amd64.tar.gz
-
+************
 
 Container restart script
 
-  * what it does
+* The restart bash:
+  1. Stops the current container.
+  2. Deletes all containers
+  3. Pulls the latest container from dockerhub
+  4. Runs the new container
 
 Webhook task definition file
 
-  * what it does
+  * Redeploy.json runs restart.sh from var/webhook
 
-Setting up a webhook on the server
+How you created you own listener
+Turn webhook into a service
+    1. Create webhook.service in /etc/systemd/system
+    2. Fill webhook.service with the contents listed below
+    3. run `sudo systemctl enable webhook.service && sudo systemctl start webhook.service`
+    * webhooks.service contents
+    ```
+[Unit]
+Description=Webhooks
 
-  * How you created you own listener
-  * How you installed and are running the webhook on GitHub
+[Service]
+ExecStart=/home/ubuntu/go/bin/webhook -hooks /home/ubuntu/redeploy.json -hotreload
+
+[Install]
+WantedBy=multi-user.target
+    ```
+How you installed and are running the webhook on GitHub
+  * 
 
 Setting up a notifier in GitHub or DockerHub
+
+  * 
