@@ -2,6 +2,20 @@
   {
     "id": "redeploy",
     "execute-command": "/home/ubuntu/cicd-3120-wivkir/webhooks/restart.sh",
-    "command-working-directory": "/var/webhook"
+    "command-working-directory": "/var/webhook",
+    "trigger-rule": {
+      "and": [
+              {
+	      "match": {
+		      "type": "payload-hash-sha1",
+		      "secret": "webhook",
+		      "parameter": {
+			         "source": "header",
+				 "name": "X-Hub-Signature"
+		                   }
+	               }
+	      }
+             ]
+   }
   }
 ]

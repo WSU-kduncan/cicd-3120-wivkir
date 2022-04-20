@@ -117,15 +117,33 @@ ExecStart=/home/ubuntu/go/bin/webhook -hooks /home/ubuntu/redeploy.json -hotrelo
 WantedBy=multi-user.target
 ```
 How you installed and are running the webhook on GitHub
-  *  
 
+Add the code below to redeploy.json after "command-working-directory"
+```
+"trigger-rule": {
+      "and": [
+              {
+              "match": {
+                      "type": "payload-hash-sha1",
+                      "secret": "webhook",
+                      "parameter": {
+                                 "source": "header",
+                                 "name": "X-Hub-Signature"
+                                   }
+                       }
+              }
+             ]
+   }
+```
 Setting up a notifier in GitHub or DockerHub
-DockerHub
+
+Docker
 1. Go to the project page in DockerHub
 2. Click `Webhooks` at the top middle of the page
 3. Input a descriptive name and the URL to be notified 
     * http://18.210.53.146:9000/hooks/redeploy in my case
 4. Click `Create`
+5. Open port 9000 for inbound traffic on the remote server
 
 Github
 1. Go to the repository on Github
@@ -137,5 +155,4 @@ Github
 6. Select `Let me select individual events.`
 7. Select `Workflow runs`
 8. Click `Add webhook`
-
-* Open port 9000 for inbound traffic on the remote server
+9. Open port 9000 for inbound traffic on the remote server
